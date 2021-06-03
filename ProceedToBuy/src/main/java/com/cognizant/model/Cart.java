@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,7 +19,8 @@ import org.springframework.stereotype.Component;
 public class Cart {
 	@Id
 	@Column
-	@GeneratedValue
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String cartId;
 	@Column
 	private String productId;
