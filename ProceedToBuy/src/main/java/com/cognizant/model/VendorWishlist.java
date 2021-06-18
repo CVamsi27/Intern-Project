@@ -4,26 +4,23 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Vamsi Krishna
+ *
+ */
 @Component
 @Entity
 @Table
 public class VendorWishlist {
 	@Id
 	@Column
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String vendorWishlistId;
-	@ManyToOne(targetEntity=Vendor.class)  
-	@JoinColumn(name="vendorId", referencedColumnName = "id")
+	@Column
 	private String vendorId;
 	@Column
 	private String productId;
@@ -32,6 +29,12 @@ public class VendorWishlist {
 	@Column
 	private Date dateAddedToWishlist;
 	
+	public String getVendorWishlistId() {
+		return vendorWishlistId;
+	}
+	public void setVendorWishlistId(String vendorWishlistId) {
+		this.vendorWishlistId = vendorWishlistId;
+	}
 	public String getVendorId() {
 		return vendorId;
 	}
@@ -59,7 +62,7 @@ public class VendorWishlist {
 	
 	@Override
 	public String toString() {
-		return "VendorWishlist [vendorId=" + vendorId + ", productId=" + productId + ", quantity=" + quantity
-				+ ", dateAddedToWishlist=" + dateAddedToWishlist + "]";
+		return "VendorWishlist [vendorWishlistId=" + getVendorWishlistId() + ", vendorId=" + getVendorId() + ", productId="
+				+ getProductId() + ", quantity=" + getQuantity() + ", dateAddedToWishlist=" + getDateAddedToWishlist() + "]";
 	}
 }

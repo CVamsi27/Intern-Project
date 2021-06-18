@@ -4,23 +4,23 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Vamsi Krishna
+ *
+ */
 @Component
 @Entity
 @Table
 public class Cart {
 	@Id
 	@Column
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String cartId;
 	@Column
 	private String productId;
@@ -29,7 +29,7 @@ public class Cart {
 	@Column
 	private Date deliveryDate;
 	@ManyToOne(targetEntity=Vendor.class)  
-	@JoinColumn(name="vendor_id", referencedColumnName = "id")
+	@JoinColumn(name="vendor_id", referencedColumnName = "vendorId")
 	private Vendor vObject;
 	
 	public String getCartId() {
@@ -62,7 +62,7 @@ public class Cart {
 	public void setvObject(Vendor vObject) {
 		this.vObject = vObject;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Cart [cartId=" + cartId + ", productId=" + productId + ", zipcode=" + zipcode + ", deliveryDate="

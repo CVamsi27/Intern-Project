@@ -2,48 +2,57 @@ package com.cognizant.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Vamsi Krishna
+ *
+ */
 @Component
 @Entity
 @Table
 public class Vendor {
 	@Id
 	@Column
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	private String id;
+	private String vendorId;
 	@Column
-	private String name;
+	private String vendorName;
 	@Column
-	private float delivaryCharges;
+	private double deliveryCharge;
+	@Column
+	private double rating;
 	
-	public String getId() {
-		return id;
+	public String getVendorId() {
+		return vendorId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setVendorId(String vendorId) {
+		this.vendorId = vendorId;
 	}
-	public String getName() {
-		return name;
+	public String getVendorName() {
+		return vendorName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setVendorName(String vendorName) {
+		this.vendorName = vendorName;
 	}
-	public float getDelivaryCharges() {
-		return delivaryCharges;
+	public double getDeliveryCharge() {
+		return deliveryCharge;
 	}
-	public void setDelivaryCharges(float delivaryCharges) {
-		this.delivaryCharges = delivaryCharges;
+	public void setDeliveryCharge(double deliveryCharge) {
+		this.deliveryCharge = deliveryCharge;
+	}
+	public double getRating() {
+		return rating;
+	}
+	public void setRating(double rating) {
+		this.rating = rating;
 	}
 	
 	@Override
 	public String toString() {
-		return "Vendor [id=" + id + ", name=" + name + ", delivaryCharges=" + delivaryCharges + "]";
+		return "Vendor [vendorId=" + vendorId + ", vendorName=" + vendorName + ", deliveryCharge=" + deliveryCharge
+				+ ", rating=" + rating + "]";
 	}
 }
