@@ -1,4 +1,4 @@
-port numbers
+Port numbers:
 1) product-service : 8083
 2) proceedToBuy-service : 8084
 3) vendor-service : 8085
